@@ -15,11 +15,7 @@ int main() {
 	double startPoint = 0.025, changePoint = 0.1, finishPoint = 0.7; // Точки начала, смены шага, конца
 	double exponent; // Степень для расчетов результата
 	double O; // Результат - содержание кислорода в стали после окисления
-	double Si; // Концентрация кремния
-
-	const double COEF_A = -31000.0; // Константа из формулы A
-	const double COEF_B = 12.152; // Константа из формулы B
-	const double BASE = 10.0; // Основание степени формулы
+	double silicoСoncentration; // Концентрация кремния
 
 	cout << "T = ";
 	cin >> T;
@@ -39,23 +35,23 @@ int main() {
 	cout << "second step = ";
 	cin >> secondStep;
 
-	Si = startPoint;
-	exponent = ((COEF_A / T) + COEF_B);
+	silicoСoncentration = startPoint;
+	exponent = ((-31000.0 / T) + 12.152);
 
 	cout << "Si\tO" << endl;
 
 	do {
-		O = sqrt(pow(BASE, exponent) / Si);
-		cout << Si << "\t" << O << endl;
-		Si = Si + firstStep;
-	} while (Si <= changePoint);
+		O = sqrt(pow(10.0, exponent) / silicoСoncentration);
+		cout << silicoСoncentration << "\t" << O << endl;
+		silicoСoncentration = silicoСoncentration + firstStep;
+	} while (silicoСoncentration <= changePoint);
 
-	Si = changePoint + secondStep;
+	silicoСoncentration = changePoint + secondStep;
 
-	while (Si <= finishPoint) {
-		O = sqrt(pow(BASE, exponent) / Si);
-		cout << Si << "\t" << O << endl;
-		Si = Si + secondStep;
+	while (silicoСoncentration <= finishPoint) {
+		O = sqrt(pow(10.0, exponent) / silicoСoncentration);
+		cout << silicoСoncentration << "\t" << O << endl;
+		silicoСoncentration = silicoСoncentration + secondStep;
 	}
 	
 	return 0;
